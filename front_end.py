@@ -2,12 +2,14 @@ from tkinter import *
 
 from back_end import Data_Model, Model
 
+from math import sqrt
+
 dt = Data_Model()
 model = Model(dt)
 
 window = Tk()
 window.title("Calculadora de pirâmides")
-window.geometry('300x330')
+window.geometry('310x330')
 window.configure(background = "grey")
 
 
@@ -63,47 +65,47 @@ entry_quantidade_laterais.grid(row = 10,column = 1)
 def calculate():
 	#get data from entries
 	try:
-		dt.aresta_base = float(entry_aresta_base.get())
+		dt.aresta_base = eval(entry_aresta_base.get())
 	except:
 		pass
 	try:
-		dt.aresta_lateral = float(entry_aresta_lateral.get())
+		dt.aresta_lateral = eval(entry_aresta_lateral.get())
 	except:
 		pass
 	try:
-		dt.apotema_base = float(entry_aresta_base.get())
+		dt.apotema_base = eval(entry_apotema_base.get())
 	except:
 		pass
 	try:
-		dt.apotema_lateral = float(entry_apotema_lateral.get())
+		dt.apotema_lateral = eval(entry_apotema_lateral.get())
 	except:
 		pass
 	try:
-		dt.altura = float(entry_altura.get())
+		dt.altura = eval(entry_altura.get())
 	except:
 		pass
 	try:
-		dt.area_base = float(entry_area_base.get())
+		dt.area_base = eval(entry_area_base.get())
 	except:
 		pass
 	try:
-		dt.area_face_lateral = float(entry_area_face_lateral.get())
+		dt.area_face_lateral = eval(entry_area_face_lateral.get())
 	except:
 		pass
 	try:
-		dt.area_lateral = float(entry_area_lateral.get())
+		dt.area_lateral = eval(entry_area_lateral.get())
 	except:
 		pass
 	try:
-		dt.area_total = float(entry_area_total.get())
+		dt.area_total = eval(entry_area_total.get())
 	except:
 		pass
 	try:
-		dt.volume = float(entry_volume.get())
+		dt.volume = eval(entry_volume.get())
 	except:
 		pass
 	try:
-		dt.quantidade_laterais = float(entry_quantidade_laterais.get())
+		dt.quantidade_laterais = eval(entry_quantidade_laterais.get())
 	except:
 		pass
 
@@ -179,9 +181,6 @@ window.grid_rowconfigure(11, minsize=50)
 
 window.grid_columnconfigure(0, minsize=140)
 
-
 window.mainloop()
 
-
-#asd
 

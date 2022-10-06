@@ -72,10 +72,17 @@ class Model():
 				self.dt.calculated_something = True
 				return
 			
+			if are_known(self.dt.aresta_base, self.dt.aresta_lateral):
+				# (aresta_base/2) ** 2 + apotema_base ** 2 = aresta_lateral ** 2
+				self.dt.apotema_lateral = sqrt((self.dt.aresta_lateral/2) ** 2 - self.dt.aresta_base/2 ** 2)
+				#self.dt.apotema_lateral = sqrt(0.25 * self.dt.aresta_base ** 2 + self.dt.aresta_lateral ** 2)
+				self.dt.calculated_something = True
+				return
+			
 	def solve_altura(self):
 		if self.dt.altura == None:
 			if are_known(self.dt.apotema_lateral, self.dt.apotema_base):
-				self.dt.altura = sqrt(self.dt.apotema_lateral ** 2 - self.dt.apotema_base ** 2)
+				self.dt.altura = sqrt(self.dt.apotema_lateral ** 2 + self.dt.apotema_base ** 2)
 				self.dt.calculated_something = True
 				return
 		
@@ -95,6 +102,11 @@ class Model():
 		if self.dt.area_face_lateral == None:
 			if are_known(self.dt.apotema_lateral, self.dt.apotema_base):
 				self.dt.area_face_lateral = self.dt.apotema_lateral * self.dt.apotema_base / 2
+				self.dt.calculated_something = True
+				return
+				
+			if are_known(self.dt.area_lateral, self.dt.quantidade_laterais):
+				self.dt.area_face_lateral = self.dt.area_lateral / self.dt.quantidade_laterais
 				self.dt.calculated_something = True
 				return
 			
@@ -125,7 +137,7 @@ class Model():
 				self.dt.quantidade_laterais = (2*self.dt.area_base) / (self.dt.aresta_base * self.dt.apotema_base)
 				self.dt.calculated_something = True
 				return
-			
+
 	def solve_specific_cases(self):
 		if self.dt.quantidade_laterais == 4 and are_known(self.dt.area_base) and self.dt.aresta_base == None:
 			self.dt.aresta_base = sqrt(self.dt.area_base)
@@ -133,6 +145,14 @@ class Model():
 			
 		if self.dt.quantidade_laterais == 6 and are_known(self.dt.aresta_base) and self.dt.apotema_base == None:
 			self.dt.apotema_base = self.dt.aresta_base * sqrt(3) / 2
+			self.dt.calculated_something = True
+			
+		if self.dt.quantidade_laterais == 4 and are_known(self.dt.aresta_base) and self.dt.apotema_base == None:
+			self.dt.apotema_base = self.dt.aresta_base / 2
+			self.dt.calculated_something = True
+			
+		if self.dt.quantidade_laterais == 4 and are_known(self.dt.apotema_base) and self.dt.aresta_base == None:
+			self.dt.aresta_base = self.dt.apotema_base * 2
 			self.dt.calculated_something = True
 		
 		
