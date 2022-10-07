@@ -72,9 +72,9 @@ class Model():
 				self.dt.calculated_something = True
 				return
 			
-			if are_known(self.dt.aresta_base, self.dt.aresta_lateral):
+			if are_known(self.dt.aresta_base, self.dt.aresta_lateral) and self.dt.quantidade_laterais == 4:
 				# (aresta_base/2) ** 2 + apotema_base ** 2 = aresta_lateral ** 2
-				self.dt.apotema_lateral = sqrt((self.dt.aresta_lateral/2) ** 2 - self.dt.aresta_base/2 ** 2)
+				self.dt.apotema_lateral = sqrt(self.dt.aresta_lateral ** 2 - (self.dt.aresta_base/2) ** 2)
 				#self.dt.apotema_lateral = sqrt(0.25 * self.dt.aresta_base ** 2 + self.dt.aresta_lateral ** 2)
 				self.dt.calculated_something = True
 				return
@@ -82,7 +82,7 @@ class Model():
 	def solve_altura(self):
 		if self.dt.altura == None:
 			if are_known(self.dt.apotema_lateral, self.dt.apotema_base):
-				self.dt.altura = sqrt(self.dt.apotema_lateral ** 2 + self.dt.apotema_base ** 2)
+				self.dt.altura = sqrt(self.dt.apotema_lateral ** 2 - self.dt.apotema_base ** 2)
 				self.dt.calculated_something = True
 				return
 		
@@ -100,8 +100,8 @@ class Model():
 			
 	def solve_area_face_lateral(self):
 		if self.dt.area_face_lateral == None:
-			if are_known(self.dt.apotema_lateral, self.dt.apotema_base):
-				self.dt.area_face_lateral = self.dt.apotema_lateral * self.dt.apotema_base / 2
+			if are_known(self.dt.apotema_lateral, self.dt.aresta_base):
+				self.dt.area_face_lateral = (self.dt.apotema_lateral * self.dt.aresta_base) / 2
 				self.dt.calculated_something = True
 				return
 				
