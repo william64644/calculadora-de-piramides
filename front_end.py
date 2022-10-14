@@ -1,8 +1,7 @@
+from math import sqrt
 from tkinter import *
 
 from back_end import Data_Model, Model
-
-from math import sqrt
 
 dt = Data_Model()
 model = Model(dt)
@@ -179,7 +178,7 @@ for rowi in range(11):
 
 window.grid_rowconfigure(11, minsize=50)
 
-window.grid_columnconfigure(0, minsize=140)
+#window.grid_columnconfigure(0, minsize=140)
 
 window.mainloop()
 
