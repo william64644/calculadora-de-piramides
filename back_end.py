@@ -64,6 +64,11 @@ class Model():
 				self.dt.apotema_base = (2*self.dt.area_base) / (self.dt.aresta_base * self.dt.quantidade_laterais)
 				self.dt.calculated_something = True
 				return
+				
+			if are_known(self.dt.aresta_base) and self.dt.quantidade_laterais == 6:
+				self.dt.apotema_base = sqrt(3) * self.dt.aresta_base / 2
+				self.dt.calculated_something = True
+				return
 		
 	def solve_apotema_lateral(self):
 		if self.dt.apotema_lateral == None:

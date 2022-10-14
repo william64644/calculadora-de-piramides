@@ -8,23 +8,23 @@ dt = Data_Model()
 model = Model(dt)
 
 window = Tk()
-window.title("Calculadora de pirâmides")
-window.geometry('310x330')
+window.title("Calculadora de piramides")
+window.geometry('324x350')
 window.configure(background = "grey")
 
 
 	# Plaing Text Labels #
-aresta_base = Label(window ,text = "Aresta da base").grid(row = 0,column = 0)
-aresta_lateral = Label(window ,text = "Aresta da lateral").grid(row = 1,column = 0)
-apotema_base = Label(window ,text = "Apotema da base").grid(row = 2,column = 0)
-apotema_lateral = Label(window ,text = "Apotema da lateral").grid(row = 3,column = 0)
-altura = Label(window ,text = "Altura").grid(row = 4,column = 0)
-area_base = Label(window ,text = "Area da base").grid(row = 5,column = 0)
-area_face_lateral = Label(window ,text = "Area da face lateral").grid(row = 6,column = 0)
-area_lateral = Label(window ,text = "Area da lateral").grid(row = 7,column = 0)
-area_total = Label(window ,text = "Area total").grid(row = 8,column = 0)
-volume = Label(window ,text = "Volume").grid(row = 9,column = 0)
-quantidade_laterais = Label(window ,text = "Quantidade laterais").grid(row = 10,column = 0)
+aresta_base = Label(window ,text = "Aresta da base", padx=18).grid(row = 0,column = 0, padx=8)
+aresta_lateral = Label(window ,text = "Aresta da lateral", padx=12).grid(row = 1,column = 0, padx=8)
+apotema_base = Label(window ,text = "Apotema da base", padx=9).grid(row = 2,column = 0, padx=8)
+apotema_lateral = Label(window ,text = "Apotema da lateral", padx=4).grid(row = 3,column = 0, padx=8)
+altura = Label(window ,text = "Altura", padx=47).grid(row = 4,column = 0, padx=8)
+area_base = Label(window ,text = "Area da base", padx=24).grid(row = 5,column = 0, padx=8)
+area_face_lateral = Label(window ,text = "Area da face lateral", padx=2).grid(row = 6,column = 0, padx=8)
+area_lateral = Label(window ,text = "Area da lateral", padx=18).grid(row = 7,column = 0, padx=8)
+area_total = Label(window ,text = "Area total", padx=34).grid(row = 8,column = 0, padx=8)
+volume = Label(window ,text = "Volume", padx=41).grid(row = 9,column = 0, padx=8)
+quantidade_laterais = Label(window ,text = "Quantidade laterais", padx=2).grid(row = 10,column = 0, padx=8)
 
 
 	# Plaing Text Inputs #
@@ -175,7 +175,7 @@ clear_btn = Button(window ,text="Limpar", command=clear).grid(row = 11, column=0
 
 
 for rowi in range(11):
-	window.grid_rowconfigure(rowi, minsize=25)
+	window.grid_rowconfigure(rowi, minsize=27)
 
 window.grid_rowconfigure(11, minsize=50)
 
